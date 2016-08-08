@@ -1,14 +1,12 @@
 # encoding:utf-8
 from pip._vendor import requests
-from Cookie import Cookie
-from pip._vendor.requests import cookies
 import re
 import urllib2
 import datetime
 from time import sleep
 import time
 from threading import Thread
-from distutils.tests.setuptools_build_ext import if_dl
+
 
 host ='http://www.guahao.com'
 
