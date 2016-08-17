@@ -1,5 +1,4 @@
 # encoding:utf-8
-from pip._vendor import requests
 import re
 import urllib2
 import datetime
