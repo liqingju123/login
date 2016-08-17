@@ -6,7 +6,6 @@ from time import sleep
 import time
 from threading import Thread
 
-
 host ='http://www.guahao.com'
 
 def rm_all_pasce(text):

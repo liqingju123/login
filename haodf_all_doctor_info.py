@@ -1,5 +1,4 @@
 # encoding:utf-8
-
 from bs4 import BeautifulSoup
 from urllib import urlopen
 import urllib2
