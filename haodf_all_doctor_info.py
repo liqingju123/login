@@ -3,10 +3,8 @@
 from bs4 import BeautifulSoup
 from urllib import urlopen
 import urllib2
-from selenium import webdriver
 import time
-import sys   
-type = sys.getfilesystemencoding()  
+import sys     
 
 
 
