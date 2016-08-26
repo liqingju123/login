@@ -1,10 +1,19 @@
 # encoding:utf-8
+<<<<<<< Updated upstream:guahaowang_doctor_all.py
+=======
+from pip._vendor import requests
+>>>>>>> Stashed changes:__init__.py
 import re
 import urllib2
 import datetime
 from time import sleep
 import time
+<<<<<<< Updated upstream:guahaowang_doctor_all.py
 from threading import Thread
+=======
+import thread
+from distutils.tests.setuptools_build_ext import if_dl
+>>>>>>> Stashed changes:__init__.py
 
 host ='http://www.guahao.com'
 
@@ -77,10 +86,12 @@ def get_shanchang(text_doctor_info):
 
 #姓名——科室——职务
 def get_doctor_name_keshi(text_doctor_info):
+    print "1111"
     text_all =re.findall(r'<h1>([\s\S]*?)</h1>',text_doctor_info)
     if len(text_all)==0:
         return '错误'
     zhiwu= name_zhuzhiyis_guanxian(text_all[0])# 获取医生 姓名——科室——职务
+    print zhiwu
     all_text =zhiwu.split('__')
     if len(all_text)==3:
         return zhiwu
@@ -157,45 +168,53 @@ def shipinwenzhen(text_doctor_info):
 
 def get_all_txt(text_doctor_info):
     print '多线程时间开始== '+str(datetime.datetime.now())
-#     thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
-#     thread.start_new_thread(get_yiyuan_keshi, (text_doctor_info,)) 
-#     thread.start_new_thread(get_shanchang, (text_doctor_info,)) 
-#     thread.start_new_thread(get_jianjie, (text_doctor_info,)) 
-#     thread.start_new_thread(guahao, (text_doctor_info,)) 
-#     thread.start_new_thread(tuwen_zixun, (text_doctor_info,)) 
-#     thread.start_new_thread(_dianhua, (text_doctor_info,)) 
-#     thread.start_new_thread(shipinwenzhen, (text_doctor_info,)) 
-#     print '多线程时间结束== '+str(datetime.datetime.now())
+    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+    thread.start_new_thread(get_yiyuan_keshi, (text_doctor_info,)) 
+    thread.start_new_thread(get_shanchang, (text_doctor_info,)) 
+    thread.start_new_thread(get_jianjie, (text_doctor_info,)) 
+    thread.start_new_thread(guahao, (text_doctor_info,)) 
+    thread.start_new_thread(tuwen_zixun, (text_doctor_info,)) 
+    thread.start_new_thread(_dianhua, (text_doctor_info,)) 
+    thread.start_new_thread(shipinwenzhen, (text_doctor_info,)) 
+    print '多线程时间结束== '+str(datetime.datetime.now())
 
-# text_doctor_info = get_html('http://www.guahao.com/expert/138181403422390000?hospDeptId=138181401423383000')
+def get_all_txt_all(text_docto):
+    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+
+text_doctor_info = get_html('http://www.guahao.com/expert/138181403422390000?hospDeptId=138181401423383000')
 # text_doctor_info = get_html('http://www.guahao.com/expert/138181403984930000?hospDeptId=138181401643702000')
 
-doctor_all_txt =open('/Users/imac/Downloads/好大夫所有医生/唯一集团/遗漏错误请求.txt','r')
-write_input =open('/Users/imac/Downloads/好大夫所有医生/唯一集团/遗漏错误请求_详情.txt','a')
-doctor_all_list =doctor_all_txt.readlines()
-doctor_all_list =doctor_all_list[1240:]
-for one_doctor in doctor_all_list:
-    doctor_list_all_info=one_doctor.split('__')
-    one_doctor =rm_all_pasce(doctor_list_all_info[len(doctor_list_all_info)-1])
-    print '=====  '+one_doctor
-    text_doctor_info = get_html(one_doctor)
-#     text_doctor_info = get_html(rm_all_pasce(text_doctor_info))
-    if text_doctor_info=='错误':
-        write_input.write('错误__'+one_doctor+'\n')
-    else:
-        if(not_have_doctor(text_doctor_info)):
-            doctor_info = get_doctor_name_keshi(text_doctor_info)+'__'+get_yiyuan_keshi(text_doctor_info)+'__'+get_shanchang(text_doctor_info)+'__'+get_jianjie(text_doctor_info)+'__'+rm_all_pasce(guahao(text_doctor_info))+'__'+tuwen_zixun(text_doctor_info)+'__'+_dianhua(text_doctor_info)+'__'+shipinwenzhen(text_doctor_info)
-            print doctor_info
-            write_input.write(rm_all_pasce(doctor_info+'__'+doctor_list_all_info[len(doctor_list_all_info)-1])+'\n')
-#             write_input.write(rm_all_pasce(doctor_info+'__'+one_doctor)+'\n')
-        else:
-            print '该医生不存在'
-            write_input.write(rm_all_pasce('没有该医生'+'__'+doctor_list_all_info[len(doctor_list_all_info)-1])+'\n') 
-    
-    sleep(2)   
-        
-write_input.close()
-doctor_all_txt.close()
+get_all_txt_all(text_doctor_info)
+
+# doctor_all_txt =open('/Users/imac/Downloads/好大夫所有医生/唯一集团/遗漏错误请求.txt','r')
+# write_input =open('/Users/imac/Downloads/好大夫所有医生/唯一集团/遗漏错误请求_详情.txt','a')
+# doctor_all_list =doctor_all_txt.readlines()
+# doctor_all_list =doctor_all_list[:1240]
+# for one_doctor in doctor_all_list:
+#     doctor_list_all_info=one_doctor.split('__')
+#     one_doctor =rm_all_pasce(doctor_list_all_info[len(doctor_list_all_info)-1])
+#     print '=====  '+one_doctor
+#     text_doctor_info = get_html(one_doctor)
+# #     text_doctor_info = get_html(rm_all_pasce(text_doctor_info))
+#     if text_doctor_info=='错误':
+#         write_input.write('错误__'+one_doctor+'\n')
+#     else:
+#         if(not_have_doctor(text_doctor_info)):
+#             doctor_info = get_doctor_name_keshi(text_doctor_info)+'__'+get_yiyuan_keshi(text_doctor_info)+'__'+get_shanchang(text_doctor_info)+'__'+get_jianjie(text_doctor_info)+'__'+rm_all_pasce(guahao(text_doctor_info))+'__'+tuwen_zixun(text_doctor_info)+'__'+_dianhua(text_doctor_info)+'__'+shipinwenzhen(text_doctor_info)
+#             print doctor_info
+#             write_input.write(rm_all_pasce(doctor_info+'__'+doctor_list_all_info[len(doctor_list_all_info)-1])+'\n')
+# #             write_input.write(rm_all_pasce(doctor_info+'__'+one_doctor)+'\n')
+#         else:
+#             print '该医生不存在'
+#             write_input.write(rm_all_pasce('没有该医生'+'__'+doctor_list_all_info[len(doctor_list_all_info)-1])+'\n') 
+#     
+#     sleep(2)   
+#         
+# write_input.close()
+# doctor_all_txt.close()
 
          
 
