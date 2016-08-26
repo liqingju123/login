@@ -1,19 +1,9 @@
 # encoding:utf-8
-<<<<<<< Updated upstream:guahaowang_doctor_all.py
-=======
-from pip._vendor import requests
->>>>>>> Stashed changes:__init__.py
 import re
 import urllib2
 import datetime
 from time import sleep
 import time
-<<<<<<< Updated upstream:guahaowang_doctor_all.py
-from threading import Thread
-=======
-import thread
-from distutils.tests.setuptools_build_ext import if_dl
->>>>>>> Stashed changes:__init__.py
 
 host ='http://www.guahao.com'
 
@@ -166,28 +156,28 @@ def shipinwenzhen(text_doctor_info):
         else:
             return '暂无开通视频问诊'
 
-def get_all_txt(text_doctor_info):
-    print '多线程时间开始== '+str(datetime.datetime.now())
-    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
-    thread.start_new_thread(get_yiyuan_keshi, (text_doctor_info,)) 
-    thread.start_new_thread(get_shanchang, (text_doctor_info,)) 
-    thread.start_new_thread(get_jianjie, (text_doctor_info,)) 
-    thread.start_new_thread(guahao, (text_doctor_info,)) 
-    thread.start_new_thread(tuwen_zixun, (text_doctor_info,)) 
-    thread.start_new_thread(_dianhua, (text_doctor_info,)) 
-    thread.start_new_thread(shipinwenzhen, (text_doctor_info,)) 
-    print '多线程时间结束== '+str(datetime.datetime.now())
-
-def get_all_txt_all(text_docto):
-    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
-    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
-    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
-    thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+# def get_all_txt(text_doctor_info):
+#     print '多线程时间开始== '+str(datetime.datetime.now())
+#     thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+#     thread.start_new_thread(get_yiyuan_keshi, (text_doctor_info,)) 
+#     thread.start_new_thread(get_shanchang, (text_doctor_info,)) 
+#     thread.start_new_thread(get_jianjie, (text_doctor_info,)) 
+#     thread.start_new_thread(guahao, (text_doctor_info,)) 
+#     thread.start_new_thread(tuwen_zixun, (text_doctor_info,)) 
+#     thread.start_new_thread(_dianhua, (text_doctor_info,)) 
+#     thread.start_new_thread(shipinwenzhen, (text_doctor_info,)) 
+#     print '多线程时间结束== '+str(datetime.datetime.now())
+# 
+# def get_all_txt_all(text_docto):
+#     thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+#     thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+#     thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
+#     thread.start_new_thread(get_doctor_name_keshi, (text_doctor_info,))
 
 text_doctor_info = get_html('http://www.guahao.com/expert/138181403422390000?hospDeptId=138181401423383000')
 # text_doctor_info = get_html('http://www.guahao.com/expert/138181403984930000?hospDeptId=138181401643702000')
 
-get_all_txt_all(text_doctor_info)
+# get_all_txt_all(text_doctor_info)
 
 # doctor_all_txt =open('/Users/imac/Downloads/好大夫所有医生/唯一集团/遗漏错误请求.txt','r')
 # write_input =open('/Users/imac/Downloads/好大夫所有医生/唯一集团/遗漏错误请求_详情.txt','a')
